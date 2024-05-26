@@ -61,14 +61,24 @@ const updateWorkout = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(402).json({ error: "Not a valid workout Id" });
   }
- try {
-    const updatedWorkout =await  Workout.findOneAndUpdate({ _id: id }, { ...req.body });
- if(!updatedWorkout){
- return    res.status(402).json({msg:'workout not found'})
- }
-res.status(200).json(updatedWorkout)
- } catch (error) {
-res.status(404).json({error: error.message})    
- } };
+  try {
+    const updatedWorkout = await Workout.findOneAndUpdate(
+      { _id: id },
+      { ...req.body }
+    );
+    if (!updatedWorkout) {
+      return res.status(402).json({ msg: "workout not found" });
+    }
+    res.status(200).json(updatedWorkout);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
 
-module.exports = { createWorkout, getAllWorkouts, getWorkout, deleteWorkout ,updateWorkout};
+module.exports = {
+  createWorkout,
+  getAllWorkouts,
+  getWorkout,
+  deleteWorkout,
+  updateWorkout,
+};

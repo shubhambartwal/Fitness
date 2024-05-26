@@ -1,5 +1,6 @@
 const express= require('express')
 const mongoose= require('mongoose')
+const cors = require('cors');
 const workoutRouter= require('./routes/workout')
 //to access env file
 require('dotenv').config()
@@ -8,7 +9,8 @@ require('dotenv').config()
 const app= express();
 
 //middleware
-
+//cors
+app.use(cors())
 //middleware to get access of req body
 app.use(express.json())
 //middleware to log all the path and req which we are executing
