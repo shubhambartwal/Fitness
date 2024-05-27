@@ -18,6 +18,7 @@ const WorkoutForm = () => {
     });
     const json = await response.json();
     console.log(response.ok)
+    console.log(json)
     if (!response.ok) {
       setError(json);
     }

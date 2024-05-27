@@ -8,6 +8,8 @@ import { createContext, useReducer } from "react";
         }
         case 'CREATE_WORKOUT':
           return { workouts:[action.payload,...state.workouts]}
+       case 'DELETE_WORKOUT':
+        return {workouts:state.workouts.filter((w)=>w._id!==action.payload)}
           default:
             return state;
     }
